@@ -8,8 +8,8 @@ module.exports = (client, message) => {
   if (message.content.indexOf(client.config.prefix) !== 0) return;
 
   if (message.channel.type === 'text')
-    console.log(`${chalk.green('[Guild Message]')} (Guild: ${message.guild.id}) (Channel: ${message.channel.id}) ${message.author.tag} : ${message.content}`);
-  else console.log(`${chalk.green('[DM Message]')} (User: ${message.author.id}) ${message.author.tag} : ${message.content}`);
+    console.log(`[${message.createdAt}] ${chalk.green('[Guild Message]')} (Guild: ${message.guild.id}) (Channel: ${message.channel.id}) ${message.author.tag} : ${message.content}`);
+  else console.log(`[${message.createdAt}] ${chalk.green('[DM Message]')} (User: ${message.author.id}) ${message.author.tag} : ${message.content}`);
 
 
   const contents = message.content.slice(client.config.prefix.length).trim();
