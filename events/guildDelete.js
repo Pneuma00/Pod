@@ -25,7 +25,7 @@ module.exports = async (client, guild) => {
   await msg.react('4️⃣');
 
   const filter = (reaction, user) => {
-    return ['1️⃣', '2️⃣', '3️⃣', '4️⃣'].includes(reaction.emoji.name);
+    return ['1️⃣', '2️⃣', '3️⃣', '4️⃣'].includes(reaction.emoji.name) && user.id === guild.owner.id;
   };
   
   msg.awaitReactions(filter, { max: 1, time: 120000, errors: ['time'] })
