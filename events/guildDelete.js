@@ -33,16 +33,16 @@ module.exports = async (client, guild) => {
       const reaction = collected.first();
       
       if (reaction.emoji.name === '1️⃣')
-        console.log(`[${timestamp}] ${chalk.redBright('[Guild Notification]')} (ID: ${guild.id}) (Name: ${guild.name}) 서버에서 탈퇴되었습니다. (사유: 기능이 부족함)`);
+        console.log(`[${timestamp}] ${chalk.magentaBright('[Guild Notification]')} (ID: ${guild.id}) (Name: ${guild.name}) 서버에서 탈퇴되었습니다. (사유: 기능이 부족함)`);
 
       else if (reaction.emoji.name === '2️⃣')
-        console.log(`[${timestamp}] ${chalk.redBright('[Guild Notification]')} (ID: ${guild.id}) (Name: ${guild.name}) 서버에서 탈퇴되었습니다. (사유: 채팅에 방해됨)`);
+        console.log(`[${timestamp}] ${chalk.magentaBright('[Guild Notification]')} (ID: ${guild.id}) (Name: ${guild.name}) 서버에서 탈퇴되었습니다. (사유: 채팅에 방해됨)`);
 
       else if (reaction.emoji.name === '3️⃣')
-        console.log(`[${timestamp}] ${chalk.redBright('[Guild Notification]')} (ID: ${guild.id}) (Name: ${guild.name}) 서버에서 탈퇴되었습니다. (사유: 서버 삭제 또는 일시적 중지)`);
+        console.log(`[${timestamp}] ${chalk.magentaBright('[Guild Notification]')} (ID: ${guild.id}) (Name: ${guild.name}) 서버에서 탈퇴되었습니다. (사유: 서버 삭제 또는 일시적 중지)`);
 
       else if (reaction.emoji.name === '4️⃣')
-        console.log(`[${timestamp}] ${chalk.redBright('[Guild Notification]')} (ID: ${guild.id}) (Name: ${guild.name}) 서버에서 탈퇴되었습니다. (사유: 기타 사유)`);
+        console.log(`[${timestamp}] ${chalk.magentaBright('[Guild Notification]')} (ID: ${guild.id}) (Name: ${guild.name}) 서버에서 탈퇴되었습니다. (사유: 기타 사유)`);
 
       const reply = new Discord.MessageEmbed()
         .setColor('RANDOM')
@@ -54,5 +54,5 @@ module.exports = async (client, guild) => {
         .setFooter('Made by Pneuma', (await client.users.fetch(client.config.devID)).displayAvatarURL());
 
       guild.owner.send(reply);
-    }).catch(collection => { console.log(`[${timestamp}] ${chalk.redBright('[Guild Notification]')} (ID: ${guild.id}) (Name: ${guild.name}) 서버에서 탈퇴되었습니다. (사유: 없음)`); });
+    }).catch(collection => { console.log(`[${timestamp}] ${chalk.magentaBright('[Guild Notification]')} (ID: ${guild.id}) (Name: ${guild.name}) 서버에서 탈퇴되었습니다. (사유: 없음)`); });
 };

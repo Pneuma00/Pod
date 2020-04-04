@@ -1,16 +1,20 @@
 const Discord = require('discord.js');
 const chalk = require('chalk');
 
-module.exports = (client, message) => {
+module.exports = async (client, message) => {
   if (message.system) return;
   if (message.author.bot) return;
 
   if (message.content.indexOf(client.config.prefix) !== 0) return;
 
+  if (await client.blacklist.Blacklist.count({ where: { user_id: message.author.id } })) {
+    console.log(`[${message.createdAt}] ${chalk.red('[Blacklisted Message]')} (Guild: ${message.guild.id}) (Channel: ${message.channel.id}) (User: ${message.author.id}) ${message.author.tag} : ${message.content}`);
+    return message.reply(':no_entry_sign: 차단된 사용자입니다.');
+  }
+
   if (message.channel.type === 'text')
     console.log(`[${message.createdAt}] ${chalk.green('[Guild Message]')} (Guild: ${message.guild.id}) (Channel: ${message.channel.id}) ${message.author.tag} : ${message.content}`);
   else console.log(`[${message.createdAt}] ${chalk.green('[DM Message]')} (User: ${message.author.id}) ${message.author.tag} : ${message.content}`);
-
 
   const contents = message.content.slice(client.config.prefix.length).trim();
   const args = contents.split(/ +/g);

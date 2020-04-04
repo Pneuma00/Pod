@@ -1,11 +1,8 @@
-const Discord = require('discord.js');
-const fs = require('fs');
-const Sequelize = require('sequelize');
-const chalk = require('chalk');
-
 require('dotenv').config();
 
 // =========================================================================================================
+
+const Discord = require('discord.js');
 
 const client = new Discord.Client();
 
@@ -19,12 +16,15 @@ client.active = new Map();
 
 // =========================================================================================================
 
+const Sequelize = require('sequelize');
+
 client.tags = require('./tag_model.js');
 
-// client.changelogs = require('./changelog_model.js');
+client.blacklist = require('./blacklist_model.js');
 
 // =========================================================================================================
 
+const fs = require('fs');
 const ascii_table = require("ascii-table");
 
 const table = new ascii_table("Commands");

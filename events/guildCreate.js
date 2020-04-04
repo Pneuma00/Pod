@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const chalk = require('chalk');
 
 module.exports = async (client, guild) => {
-  console.log(`[${new Date()}] ${chalk.redBright('[Guild Notification]')} 새로운 서버에 가입되었습니다: ${guild.name} (id: ${guild.id}). 해당 서버에는 ${guild.memberCount}명의 멤버가 있습니다.`);
+  console.log(`[${new Date()}] ${chalk.magentaBright('[Guild Notification]')} 새로운 서버에 가입되었습니다: ${guild.name} (id: ${guild.id}). 해당 서버에는 ${guild.memberCount}명의 멤버가 있습니다.`);
   
   const embed = new Discord.MessageEmbed()
     .setColor('RANDOM')
