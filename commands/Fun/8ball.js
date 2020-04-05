@@ -9,7 +9,8 @@ module.exports = {
   usage: ['[질문]?'],
   async execute(message, args) {
     const question = args.join(' ');
-    if (question.slice(-1) !== '?') return message.reply('올바른 질문을 입력해주세요.');
+
+    if (question.slice(-1) !== '?' || args.length < 2) return message.reply('올바른 질문을 입력해주세요.');
 
     const answers = [
       '네.', '네, 아마도요.', '네, 확실해요.', '제 생각에는 그럴 것 같아요.',

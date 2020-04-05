@@ -1,9 +1,16 @@
 const Discord = require('discord.js');
+const badwordsArray = require('badwords/array');
+const badwords = require('../badwords.json');
 const chalk = require('chalk');
 
 module.exports = async (client, message) => {
   if (message.system) return;
   if (message.author.bot) return;
+
+  if (badwords.list.includes(message.content) || badwordsArray.includes(message.content)) {
+    message.delete();
+    return message.reply(`나쁜 말을 사용하지 마세요.\n${message.author.tag}: ||${message.content}||`);
+  }
 
   if (message.content.indexOf(client.config.prefix) !== 0) return;
 

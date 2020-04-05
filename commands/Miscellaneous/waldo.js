@@ -12,7 +12,7 @@ module.exports = {
   async execute(message, args) {
     const waldoText = args.join(' ');
     let result = waldoText;
-    const route = ['ko', 'sv', 'hi', 'vi', 'ko'];
+    const route = ['ko', 'en', 'fr', 'ko'];
 
     const embed = new Discord.MessageEmbed()
       .setColor('ORANGE')
@@ -20,7 +20,7 @@ module.exports = {
 
     const msg = await message.channel.send(embed);
 
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 3; i++) {
       await translate(result, { from: route[i], to: route[i + 1] }).then(res => {result = res.text;})
       .catch(err => {
         console.log(err);
