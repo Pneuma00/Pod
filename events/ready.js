@@ -1,8 +1,8 @@
 module.exports = async (client) => {
+  const storedBalances = await client.database.Users.findAll();
+  storedBalances.forEach(b => client.currency.set(b.user_id, b));
+
   console.log(`${client.guilds.cache.size}개 서버의 ${client.channels.cache.size}개 채널에서 ${client.users.cache.size}명의 유저와 참여할 준비가 되었습니다.`);
-  
-  client.tags.Tags.sync();
-  client.blacklist.Blacklist.sync();
 
   let index = 0;
   

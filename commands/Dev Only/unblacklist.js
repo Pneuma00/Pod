@@ -12,7 +12,7 @@ module.exports = {
     const user = require('../../functions.js').getUserFromMention(message.client, args.shift());
 
     if (user) {
-      const targetUser = await message.client.blacklist.Blacklist.findOne({ where: { user_id: user.id } });
+      const targetUser = await message.client.database.Blacklist.findOne({ where: { user_id: user.id } });
 
       if (!targetUser) return message.reply('블랙리스트에 추가되지 않은 사용자입니다.');
 

@@ -2,7 +2,6 @@ const Discord = require("discord.js");
 
 module.exports = {
   name: 'command',
-  category: 'Help',
   description: 'Pod 봇 명령어 전체 목록 또는 특정 명령어의 도움말을 표시합니다.',
   aliases: ['commands', 'cmd', 'cmds', '명령어', '명령', '커맨드'],
   usage: ['<명령어>'],
@@ -15,7 +14,7 @@ module.exports = {
         .setTitle('Pod 봇 명령어 전체 목록')
         .setAuthor('Pod', 'https://i.imgur.com/8eJU78T.png')
         .setThumbnail('https://i.imgur.com/8eJU78T.png')
-        .setDescription(`\`${message.client.config.prefix}command <명령어>\` 로 특정 명령어에 대한 설명을 볼 수 있습니다.
+        .setDescription(`\`${message.client.config.prefix}command <명령어>\` 로 특정 명령어의 도움말을 볼 수 있습니다.
           ${
             categories.map(e => {
               return `\n**${e}**\n` + message.client.commands.filter(c => c.category === e).map(c => `\`${c.name}\``).join(' | ');
@@ -40,7 +39,7 @@ module.exports = {
         .setTitle('Pod 개발자 전용 명령어 목록')
         .setAuthor('Pod', 'https://i.imgur.com/8eJU78T.png')
         .setThumbnail('https://i.imgur.com/8eJU78T.png')
-        .setDescription(`\`${message.client.config.prefix}command <명령어>\` 로 특정 명령어에 대한 설명을 볼 수 있습니다.\n
+        .setDescription(`\`${message.client.config.prefix}command <명령어>\` 로 특정 명령어의 도움말을 볼 수 있습니다.\n
           ${message.client.commands.filter(c => c.category === 'Dev Only').map(c => `\`${c.name}\``).join(' | ')}`)
         .setTimestamp()
         .setFooter('Made by Pneuma', (await message.client.users.fetch(message.client.config.devID)).displayAvatarURL());

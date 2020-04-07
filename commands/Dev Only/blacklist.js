@@ -12,10 +12,10 @@ module.exports = {
     const user = require('../../functions.js').getUserFromMention(message.client, args.shift());
 
     if (user) {
-      if (await message.client.blacklist.Blacklist.count({ where: { user_id: user.id } }))
+      if (await message.client.database.Blacklist.count({ where: { user_id: user.id } }))
         return message.reply('이미 블랙리스트에 추가된 사용자입니다.');
         
-      const targetUser = await message.client.blacklist.Blacklist.create({
+      const targetUser = await message.client.database.Blacklist.create({
         user_id: user.id,
         reason: args.join(' ') || '이유가 지정되지 않음',
       });

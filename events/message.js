@@ -14,7 +14,7 @@ module.exports = async (client, message) => {
 
   if (message.content.indexOf(client.config.prefix) !== 0) return;
 
-  if (await client.blacklist.Blacklist.count({ where: { user_id: message.author.id } })) {
+  if (await client.database.Blacklist.count({ where: { user_id: message.author.id } })) {
     console.log(`[${message.createdAt}] ${chalk.red('[Blacklisted Message]')} (Guild: ${message.guild.id}) (Channel: ${message.channel.id}) (User: ${message.author.id}) ${message.author.tag} : ${message.content}`);
     return message.reply(':no_entry_sign: 차단된 사용자입니다.');
   }

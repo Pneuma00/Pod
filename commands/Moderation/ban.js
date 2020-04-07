@@ -1,6 +1,5 @@
 module.exports = {
   name: 'ban',
-  category: 'Moderation',
   description: '서버의 멤버를 차단합니다. 이유를 지정하면 감사 로그에 해당 이유가 기록됩니다.',
   guildOnly: true,
   args: true,

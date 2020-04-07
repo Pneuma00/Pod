@@ -16,11 +16,10 @@ client.active = new Map();
 
 // =========================================================================================================
 
-const Sequelize = require('sequelize');
 
-client.tags = require('./tag_model.js');
+client.database = require('./dbObjects.js');
 
-client.blacklist = require('./blacklist_model.js');
+client.currency = new Discord.Collection();
 
 // =========================================================================================================
 
@@ -37,10 +36,12 @@ fs.readdirSync("./commands/").forEach(dir => {
 		const command = require(`./commands/${dir}/${file}`);
 
 		if (command.name) {
+			command.category = dir;
 			client.commands.set(command.name, command);
-			table.addRow(file, '✅ Succeed');
-		} else {
-			table.addRow(file, '❌ Failed');
+			table.addRow(`${dir} / ${file}`, '✅ Succeed');
+		}
+		else {
+			table.addRow(`${dir} / ${file}`, '❌ Failed');
 			continue;
 		}
 	}

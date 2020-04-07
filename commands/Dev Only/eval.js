@@ -19,7 +19,7 @@ module.exports = {
     const code = args.join(' ');
     
     try {
-      let evaled = new Function('message', 'args', code)(message, args);
+      let evaled = eval(code);
  
       if (typeof evaled !== "string")
         evaled = require("util").inspect(evaled);

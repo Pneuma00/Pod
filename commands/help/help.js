@@ -2,7 +2,6 @@ const Discord = require('discord.js');
 
 module.exports = {
   name: 'help',
-  category: 'Help',
   description: 'Pod 봇에 대한 도움말을 표시합니다.',
   aliases: ['helpme', 'info', '도움', '도움말'],
   async execute(message, args) {

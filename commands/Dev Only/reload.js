@@ -25,6 +25,7 @@ module.exports = {
         const newCommand = require(`../${dir}/${file}`);
     
         if (newCommand.name) {
+          newCommand.category = dir;
           message.client.commands.set(newCommand.name, newCommand);
           table.addRow(file, '✅Succeed');
           successCount += 1;
