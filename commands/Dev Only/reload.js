@@ -27,16 +27,15 @@ module.exports = {
         if (newCommand.name) {
           newCommand.category = dir;
           message.client.commands.set(newCommand.name, newCommand);
-          table.addRow(file, '✅Succeed');
+          table.addRow(`${dir} / ${file}`, '✅Succeed');
           successCount += 1;
         }
         else {
-          table.addRow(file, '❌Failed');
+          table.addRow(`${dir} / ${file}`, '❌Failed');
           failCount += 1;
           failCommand.push(file);
           continue;
         }
-        message.client.commands.set(newCommand.name, newCommand);
       }
     });
 
