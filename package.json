@@ -32,6 +32,7 @@
     "random-puppy": "^1.1.0",
     "request": "^2.88.2",
     "sequelize": "^5.21.5",
+    "sqlite3": "^4.1.1",
     "wolfram-alpha-api": "https://products.wolframalpha.com/api/libraries/javascript/wolfram-alpha-api-1.0.0-rc.1.tgz"
   }
 }
