@@ -55,4 +55,4 @@ fs.readdirSync("./events/").forEach(file => {
   client.on(eventName, event.bind(null, client));
 });
 
-client.login(process.env.DISCORD_TOKEN);
+client.login();
