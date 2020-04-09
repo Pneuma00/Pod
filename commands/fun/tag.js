@@ -138,7 +138,12 @@ module.exports = {
             .replace(/{channel_id}/g, message.channel.id)
             .replace(/{args;[0-9]+}/g, d => {
               return args[parseInt(d.substring(6, d.length - 1))];
-            });
+            })
+            .replace(/{args;all}/g, args.join(' '))
+            .replace(/{args;join;[^]+}/g, d => {
+              return args.join(d.substring(11, d.length - 1));
+            })
+            .replace(/{args;length}/g, args.length);
           return message.channel.send(tagResult, { split: { char: ' ' } });
         }
       }

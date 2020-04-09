@@ -24,7 +24,6 @@
     "cheerio-httpcli": "^0.7.4",
     "discord.js": "^12.0.2",
     "dotenv": "^8.2.0",
-    "electron": "^8.2.0",
     "eslint": "^6.8.0",
     "express": "^4.17.1",
     "ffbinaries": "^1.1.4",
@@ -39,7 +38,6 @@
     "request": "^2.88.2",
     "sequelize": "^5.21.5",
     "sqlite3": "^4.1.1",
-    "wolfram-alpha-api": "https://products.wolframalpha.com/api/libraries/javascript/wolfram-alpha-api-1.0.0-rc.1.tgz",
-    "ytdl-core": "^2.0.1"
+    "wolfram-alpha-api": "https://products.wolframalpha.com/api/libraries/javascript/wolfram-alpha-api-1.0.0-rc.1.tgz"
   }
 }
