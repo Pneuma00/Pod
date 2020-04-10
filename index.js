@@ -16,10 +16,29 @@ client.active = new Map();
 
 // =========================================================================================================
 
-
 client.database = require('./dbObjects.js');
 
 client.currency = new Discord.Collection();
+
+Reflect.defineProperty(client.currency, 'add', {
+	value: async function add(id, amount) {
+		const user = client.currency.get(id);
+		if (user) {
+			user.balance += Number(amount);
+			return user.save();
+		}
+		const newUser = await client.database.Users.create({ user_id: id, balance: amount });
+		client.currency.set(id, newUser);
+		return newUser;
+	},
+});
+
+Reflect.defineProperty(client.currency, 'getBalance', {
+	value: function getBalance(id) {
+		const user = client.currency.get(id);
+		return user ? user.balance : 0;
+	},
+});
 
 // =========================================================================================================
 

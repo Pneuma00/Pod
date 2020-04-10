@@ -7,6 +7,7 @@ module.exports = {
   aliases: ['8b', '8공', '8볼'],
   args: true,
   usage: ['[질문]?'],
+  cost: 5,
   async execute(message, args) {
     const question = args.join(' ');
 

@@ -12,6 +12,8 @@ module.exports = async (client, message) => {
     return message.reply(`나쁜 말을 사용하지 마세요.\n${message.author.tag}: ||${message.content}||`);
   }
 
+  client.currency.add(message.author.id, 1);
+
   if (message.content.indexOf(client.config.prefix) !== 0) return;
 
   if (await client.database.Blacklist.count({ where: { user_id: message.author.id } })) {
@@ -76,6 +78,20 @@ module.exports = async (client, message) => {
 
   timestamps.set(message.author.id, now);
   setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
+
+  client.currency.add(message.author.id, -1);
+
+  if (command.cost) {
+    if (client.currency.getBalance(message.author.id) - command.cost < 0)
+      return message.reply('Podcoin💰 이 부족합니다. 이 명령어를 사용하기 위해서는 5 Podcoin💰 이 필요합니다.');
+
+    else {
+      client.currency.add(message.author.id, -command.cost);
+      const embed = new Discord.MessageEmbed()
+        .setTitle(`${command.cost} Podcoin 💰 을 사용했습니다.`);
+      message.channel.send(embed).then(msg => msg.delete({ timeout: 3000 }));
+    }
+  }
 
   // executing
   try {

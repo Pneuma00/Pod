@@ -8,7 +8,7 @@ module.exports = {
   cooldown: 5,
   async execute(message, args) {
     if (!args.length) {
-      const categories = ['Basic', 'Social (WIP)', 'Fun', 'Utilities', 'Miscellaneous', 'Moderation', 'Music (UNSTABLE)'];
+      const categories = ['Basic', 'Social (WIP)', 'Fun', 'Utilities', 'Miscellaneous', 'Moderation'];
       const embed = new Discord.MessageEmbed()
         .setColor('RANDOM')
         .setTitle('Pod 봇 명령어 전체 목록')

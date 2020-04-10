@@ -23,7 +23,7 @@ module.exports = {
         const tag = await message.client.database.Tags.create({
           name: tagName,
           description: tagDescription,
-          username: message.author.username,
+          user_id: message.author.id,
           guild_id: message.guild.id,
         });
         return message.reply(`태그 \`${tag.name}\` 가 추가되었습니다.`);
@@ -47,7 +47,7 @@ module.exports = {
       const affectedRows = await message.client.database.Tags.findOne({ where: { name: tagName, guild_id: message.guild.id } });
       if (!affectedRows) return message.reply('존재하지 않는 태그입니다.');
 
-      if (message.author.username !== affectedRows.username) {
+      if (message.author.id !== affectedRows.user_id) {
         return message.reply('해당 태그를 수정할 권한이 없습니다.');
       }
       await affectedRows.update({ description: tagDescription }, { where: { name: tagName, guild_id: message.guild.id } });
@@ -61,7 +61,7 @@ module.exports = {
       // equivalent to: SELECT * FROM tags WHERE name = 'tagName' LIMIT 1;
       const tag = await message.client.database.Tags.findOne({ where: { name: tagName, guild_id: message.guild.id } });
       if (tag) {
-        return message.channel.send(`태그 \`${tagName}\` 는 \`${tag.username}\` 에 의해 \`${tag.createdAt}\` 에 만들어졌고, ${tag.usage_count}번 사용되었습니다.`);
+        return message.channel.send(`태그 \`${tagName}\` 는 \`${message.client.users.cache.get(tag.user_id).username}\` 에 의해 \`${tag.createdAt}\` 에 만들어졌고, ${tag.usage_count}번 사용되었습니다.`);
       }
       return message.reply(`\`${tagName}\` 이라는 이름의 태그를 찾을 수 없습니다.`);
     }
@@ -85,7 +85,7 @@ module.exports = {
 
       const rowCount = await message.client.database.Tags.findOne({ where: { name: tagName, guild_id: message.guild.id } });
       if (!rowCount) return message.reply('존재하지 않는 태그입니다.');
-      if (message.author.username !== rowCount.username && message.author.id !== message.guild.owner.id && message.author.id !== message.client.config.devID) {
+      if (message.author.id !== rowCount.user_id && message.author.id !== message.guild.owner.id && message.author.id !== message.client.config.devID) {
         return message.reply('해당 태그를 삭제할 권한이 없습니다.');
       }
       await rowCount.destroy({ where: { name: tagName } });
@@ -107,7 +107,7 @@ module.exports = {
       let rankText = '';
       for (let i = 0; i < 10; i++) {
         if (!tagList[i]) break;
-        rankText += `${i + 1}. [${tagList[i].name}](${tagList[i].usage_count}회) - ${tagList[i].username}\n`;
+        rankText += `${i + 1}. [${tagList[i].name}](${tagList[i].usage_count}회) - ${message.client.users.cache.get(tagList[i].user_id).username}\n`;
       }
 
       return message.channel.send(
