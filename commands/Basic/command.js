@@ -74,7 +74,7 @@ module.exports = {
     }
     else desc += `\n**사용방법**\n\`${message.client.config.prefix}${command.name}\`\n`;
 
-    if (command.cost) desc += `\n**이용료**\n${command.cost} Podcoin 💰`;
+    if (command.cost) desc += `\n**이용료**\n${command.cost} Podcoin 💰\n`;
 
     desc += `\n**쿨타임**\n${command.cooldowns || 3} 초\n`;
 

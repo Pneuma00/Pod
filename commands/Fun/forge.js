@@ -5,6 +5,7 @@ module.exports = {
   name: 'forge',
   description: '강화할 수록 성공 확률이 낮아지고, 연속으로 많은 강화를 성공해서 끝내는 게임입니다. 단, 도중에 강화를 실패하거나 이모지 추가 이후 10초 동안 반응이 없으면 패배가 됩니다.',
   aliases: ['reinforce', '강화', '강화게임'],
+  cost: 10,
   async execute(message, args) {
     const embed = new Discord.MessageEmbed()
       .setColor('RANDOM')
