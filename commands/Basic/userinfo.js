@@ -14,7 +14,7 @@ module.exports = {
       .setColor('RANDOM')
       .setTitle('유저 정보')
       .setThumbnail(await target.displayAvatarURL())
-      .setDescription(`**유저명:** ${target.tag}\n**닉네임:** ${member.nickname}\n**ID:** ${target.id}\n**계정 생성일자:** ${target.createdAt}\n**서버 가입일자:** ${member.joinedAt}\n**역할:** ${member.roles.cache.sort((a, b) => b.position - a.position).map(r => `<@&${r.id}>`)}`)
+      .setDescription(`**유저명:** ${target.tag}\n**닉네임:** ${member.nickname}\n**ID:** ${target.id}\n**계정 생성일자:** ${target.createdAt}\n**서버 가입일자:** ${member.joinedAt}\n**역할:** ${member.roles.cache.sort((a, b) => b.position - a.position).map(r => `<@&${r.id}>`).join(' ')}`)
       .setTimestamp()
       .setFooter(`${message.author.tag} 에 의해 요청됨`, await message.author.displayAvatarURL());
     

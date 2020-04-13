@@ -22,7 +22,7 @@ module.exports = {
       .setTimestamp();
     const msg = await message.channel.send(embed);
 
-    const number = Math.floor(Math.random() * 6) + 1;
+    const number = require('../../functions.js').getRandomIntInclusive(1, 6);
     const result = dice[number - 1]
       .replace(/[.]/g, ':white_large_square:')
       .replace(/[0]/g, ':black_circle:');

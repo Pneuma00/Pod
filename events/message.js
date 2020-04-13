@@ -1,20 +1,15 @@
 const Discord = require('discord.js');
-const badwordsArray = require('badwords/array');
-const badwords = require('../badwords.json');
 const chalk = require('chalk');
 
 module.exports = async (client, message) => {
   if (message.system) return;
   if (message.author.bot) return;
 
-  if (badwords.list.includes(message.content) || badwordsArray.includes(message.content)) {
-    message.delete();
-    return message.reply(`나쁜 말을 사용하지 마세요.\n${message.author.tag}: ||${message.content}||`);
-  }
-
   client.currency.add(message.author.id, 1);
 
   if (message.content.indexOf(client.config.prefix) !== 0) return;
+
+  client.currency.add(message.author.id, -1);
 
   if (await client.database.Blacklist.count({ where: { user_id: message.author.id } })) {
     console.log(`[${message.createdAt}] ${chalk.red('[Blacklisted Message]')} (Guild: ${message.guild.id}) (Channel: ${message.channel.id}) (User: ${message.author.id}) ${message.author.tag} : ${message.content}`);
@@ -78,8 +73,6 @@ module.exports = async (client, message) => {
 
   timestamps.set(message.author.id, now);
   setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
-
-  client.currency.add(message.author.id, -1);
 
   if (command.cost) {
     if (client.currency.getBalance(message.author.id) - command.cost < 0)

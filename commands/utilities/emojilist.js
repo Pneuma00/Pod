@@ -12,7 +12,7 @@ module.exports = {
       .setTitle('서버 커스텀 이모지 목록')
       .setThumbnail(`https://cdn.discordapp.com/icons/${message.guild.id}/${message.guild.icon}.png`)
       .setDescription(`본 서버에는 **${message.guild.emojis.cache.size}개**의 커스텀 이모지가 등록되어있습니다.\n
-        ${message.guild.emojis.cache.map(e => `<:${e.name}:${e.id}>`).join(' ')}`)
+        ${message.guild.emojis.cache.map(e => e.toString()).join(' ')}`)
       .setTimestamp();
     message.channel.send(embed);
   },

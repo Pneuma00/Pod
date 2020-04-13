@@ -26,8 +26,7 @@ module.exports = {
           .setColor('RED')
           .setTitle('국내 코로나19 지자체별 발생 동향')
           .setAuthor('Pod', 'https://i.imgur.com/8eJU78T.png')
-          .attachFiles(['./images/Avatar_mask.png'])
-          .setThumbnail('attachment://Avatar_mask.png')
+          .setThumbnail('https://i.imgur.com/skfIfCm.png')
           .setDescription("베타 기능이므로 불안정할 수 있습니다.")
           .setFooter(`${date} | 출처: 질병관리본부 코로나19 홈페이지`, 'http://ncov.mohw.go.kr/static/image/header/ROK.png');
 
@@ -87,8 +86,7 @@ module.exports = {
         .setColor('RED')
         .setTitle('국내 코로나19 전국 발생 동향')
         .setAuthor('Pod', 'https://i.imgur.com/8eJU78T.png')
-        .attachFiles(['./images/Avatar_mask.png'])
-        .setThumbnail('attachment://Avatar_mask.png')
+        .setThumbnail('https://i.imgur.com/skfIfCm.png')
         .setDescription("베타 기능이므로 불안정할 수 있습니다.")
         .addFields(
           { name: ':drop_of_blood: 확진자', value: `${numData[0]}명 (${beforeData[0]})`, inline: true },
