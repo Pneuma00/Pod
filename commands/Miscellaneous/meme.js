@@ -7,7 +7,7 @@ module.exports = {
   description: 'reddit 랜덤 이미지를 보여줍니다.\n**이미지를 필터링하지 않으므로 NSFW 채널에서 사용하는 것을 권장합니다.**',
   aliases: ['redditmeme', 'reddit', 'subreddit', 'memeimage', '밈', '레딧밈'],
   usage: ['<서브레딧명>'],
-  cooldown: 5,
+  cooldowns: 5,
   async execute(message, args) {
     const subReddits = ['dankmeme', 'meme', 'me_irl'];
     const randomSub = args[0] || subReddits[Math.floor(Math.random() * subReddits.length)];

@@ -8,7 +8,7 @@ module.exports = {
   aliases: ['doc', 'djsdocs', 'djsdoc', 'djs', 'discordjs', '문서', '독스', '도큐', '도큐먼트'],
   args: true,
   usage: ['[키워드]'],
-  cooldown: 10,
+  cooldowns: 10,
   async execute(message, args) {
     const query = args.join(' ').replace('#', '.');
     if (!query) return message.reply('검색할 키워드를 입력 해주세요.');

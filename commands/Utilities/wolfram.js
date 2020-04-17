@@ -13,7 +13,7 @@ module.exports = {
   aliases: ['wolframalpha', 'wolf', '울프럼', '울프럼알파', '울프'],
   args: true,
   usage: ['[검색 내용]'],
-  cooldown: 5,
+  cooldowns: 5,
   async execute(message, args) {
     const question = args.join(' ');
 

@@ -5,7 +5,7 @@ module.exports = {
   description: 'Pod 봇 명령어 전체 목록 또는 특정 명령어의 도움말을 표시합니다.',
   aliases: ['commands', 'cmd', 'cmds', '명령어', '명령', '커맨드'],
   usage: ['<명령어>'],
-  cooldown: 5,
+  cooldowns: 5,
   async execute(message, args) {
     if (!args.length) {
       const categories = ['Basic', 'Social', 'Fun', 'Utilities', 'Miscellaneous', 'Moderation'];

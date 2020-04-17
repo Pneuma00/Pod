@@ -8,7 +8,7 @@ module.exports = {
   aliases: ['translation', '번역', '번역기'],
   args: true,
   usage: ['auto <도착언어> [텍스트]', '<출발언어> <도착언어> [텍스트]'],
-  cooldown: 10,
+  cooldowns: 10,
   execute(message, args) {
     const logoURL = 'https://seeklogo.com/images/G/google-translate-logo-66F8665D22-seeklogo.com.png';
     const fromLang = args.shift();

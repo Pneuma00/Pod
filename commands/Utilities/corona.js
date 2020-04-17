@@ -9,7 +9,7 @@ module.exports = {
   description: '국내 코로나19 감염 현황 정보를 표시합니다.',
   aliases: ['covid', 'covid19', 'ncov', '코로나', '코비드'],
   usage: ['local'],
-  cooldown: 10,
+  cooldowns: 10,
   async execute(message, args) {
     if (args.length && (['local', '지역']).includes(args[0])) {
       const loading = new Discord.MessageEmbed()

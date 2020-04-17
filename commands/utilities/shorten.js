@@ -8,7 +8,7 @@ module.exports = {
   aliases: ['shorturl', 'isgd', '단축', '링크단축'],
   args: true,
   usage: ['<단축할 링크>', '<단축할 링크> <이름>'],
-  cooldown: 10,
+  cooldowns: 10,
   async execute(message, args) {
     const longURL = args[0];
 
