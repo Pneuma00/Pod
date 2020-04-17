@@ -7,7 +7,7 @@ module.exports = async (client) => {
   let index = 0;
   
   setInterval(() => {
-    const activities_list = [`${client.guilds.cache.size}개의 서버에 참여 중`, `${client.users.cache.size}명 유저와 함께 중`, 'https://enturl.me/pod', '꾸준히 업데이트 중..'];
+    const activities_list = [`${client.guilds.cache.size}개의 서버에 참여 중`, `${client.users.cache.size}명 유저와 함께 중`, 'https://is.gd/PodBot', '꾸준히 업데이트 중..'];
     client.user.setActivity(`${client.config.prefix}help | ${activities_list[index]}`);
     index = (index + 1) % activities_list.length;
   }, 5000);  
