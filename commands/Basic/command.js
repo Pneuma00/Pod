@@ -17,7 +17,7 @@ module.exports = {
         .setDescription(`\`${message.client.config.prefix}command <명령어>\` 로 특정 명령어의 도움말을 볼 수 있습니다.
           ${
             categories.map(e => {
-              return `\n**${e}**\n` + message.client.commands.filter(c => c.category === e).map(c => `\`${c.name}\``).join(' | ');
+              return `\n**${e}**\n` + message.client.commands.filter(c => c.category === e && !c.beta).map(c => `\`${c.name}\``).join(' | ');
             }).join('\n')
           }`)
         .setTimestamp()
@@ -41,6 +41,19 @@ module.exports = {
         .setThumbnail('https://i.imgur.com/8eJU78T.png')
         .setDescription(`\`${message.client.config.prefix}command <명령어>\` 로 특정 명령어의 도움말을 볼 수 있습니다.\n
           ${message.client.commands.filter(c => c.category === 'Dev Only').map(c => `\`${c.name}\``).join(' | ')}`)
+        .setTimestamp()
+        .setFooter('Made by Pneuma', (await message.client.users.fetch(message.client.config.devID)).displayAvatarURL());
+      return message.channel.send(embed);
+    }
+
+    if (args[0] === 'beta') {
+      const embed = new Discord.MessageEmbed()
+        .setColor('RANDOM')
+        .setTitle('Pod 봇 베타 명령어 목록')
+        .setAuthor('Pod', 'https://i.imgur.com/8eJU78T.png')
+        .setThumbnail('https://i.imgur.com/8eJU78T.png')
+        .setDescription(`\`${message.client.config.prefix}command <명령어>\` 로 특정 명령어의 도움말을 볼 수 있습니다.\n
+          ${message.client.commands.filter(c => c.beta).map(c => `\`${c.name}\``).join(' | ')}`)
         .setTimestamp()
         .setFooter('Made by Pneuma', (await message.client.users.fetch(message.client.config.devID)).displayAvatarURL());
       return message.channel.send(embed);

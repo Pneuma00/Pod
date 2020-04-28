@@ -15,7 +15,7 @@ module.exports = {
   devOnly: true,
   args: true,
   usage: ['[코드]'],
-  execute(message, args) {
+  async execute(message, args) {
     const code = args.join(' ');
     
     try {
