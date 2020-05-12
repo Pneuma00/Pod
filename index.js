@@ -6,6 +6,9 @@ const Discord = require('discord.js');
 
 const client = new Discord.Client();
 
+const Koreanbots = require('koreanbots');
+client.koreanbots = new Koreanbots.MyBot(process.env.KOREANBOTS_TOKEN);
+
 const config = require("./config.json");
 client.config = config;
 
